@@ -1,7 +1,7 @@
 import axiod from "https://deno.land/x/axiod@0.20.0-0/mod.ts";
 const baseURL = "https://jspaste.tnfangel.repl.co";
 
-export class publicar {
+export class tspaste {
   async publicar(texto: string) {
     let respuesta = null;
     await axiod.post(`${baseURL}/documents`, texto)
@@ -13,9 +13,7 @@ export class publicar {
       });
     return respuesta;
   }
-}
 
-export class obtener {
   async obtener(clave: string) {
     let respuesta = null;
     await axiod.get(`${baseURL}/documents/${clave}`)
