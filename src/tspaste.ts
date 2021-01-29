@@ -5,7 +5,7 @@ export async function publicar(texto: string) {
   let respuesta = null;
   await axiod.post(`${baseURL}/documents`, texto)
     .then((result) => {
-      return respuesta = `${baseURL}/${result}`;
+      respuesta = `${baseURL}/${result}`;
     })
     .catch((error) => {
       return console.error("[TSPaste Error]: " + error);
@@ -17,7 +17,7 @@ export async function obtener(clave: string) {
   let respuesta = null;
   await axiod.get(`${baseURL}/documents/${clave}`)
     .then((result) => {
-      return respuesta = result;
+      respuesta = result;
     })
     .catch((error) => {
       return console.error("[TSPaste Error]: " + error);
