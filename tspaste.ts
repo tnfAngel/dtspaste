@@ -1,4 +1,9 @@
-import { JqAjaxGetManager, JqAjaxPostManager, JsHelper, UserInteraction } from "./deps.ts";
+import {
+  JqAjaxGetManager,
+  JqAjaxPostManager,
+  JsHelper,
+  UserInteraction,
+} from "./deps.ts";
 const baseURL = "https://jspaste.tnfangel.repl.co";
 
 export class publicar {
