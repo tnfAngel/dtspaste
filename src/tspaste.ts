@@ -5,10 +5,10 @@ export class publish {
   async publicar(texto: string) {
     let obtenido = null;
     await Prajax.post(`${baseURL}/documents`, { texto })
-      .then((result) => {
-        return obtenido = `${baseURL}/${result.key}`;
+      .then((res) => {
+        return obtenido = `${baseURL}/${res.key}`;
       }).catch((result) => {
-        return console.error("[TSPaste Error]: " + result);
+        return console.error("[TSPaste Error]: "+result);
       });
     return this;
   }
@@ -18,10 +18,10 @@ export class obtain {
   async obtener(texto: string) {
     let obtenido = null;
     await Prajax.get(`${baseURL}/documents/${texto}`)
-      .then((result) => {
-        obtenido = result;
-      }).catch((result) => {
-        return console.error("[TSPaste Error]: " + result);
+      .then((res) => {
+        return obtenido = res;
+      }).catch((res) => {
+        return console.error("[TSPaste Error]: "+res);
       });
     return this;
   }
