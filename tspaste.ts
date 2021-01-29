@@ -2,26 +2,20 @@ import { JqAjaxPostManager, JqAjaxGetManager, JsHelper, UserInteraction } from "
 const baseURL = 'https://jspaste.tnfangel.repl.co'
 
 export class publicar {
-    input: string;
-
-    constructor(message: string) {
-        this.input = message;
-    }
-
-    async texto() {
+    async publicar(texto: string) {
         let obtenido = null
         var userInteraction = new UserInteraction();
         var jsHelper = new JsHelper();
         var ajaxPostMgr = new JqAjaxPostManager();
         ajaxPostMgr.userInteraction = userInteraction;
         ajaxPostMgr.jsHelper = jsHelper;
-        await ajaxPostMgr.performAjaxPostJson(`${baseURL}/documents`, this.input, {
-            successCallback: function (result) {
+        await ajaxPostMgr.performAjaxPostJson(`${baseURL}/documents`, texto, {
+            successCallback: function (result: { key: any; }) {
                 return obtenido = `${baseURL}/${result.key}`
             }
         },
         {
-            failureCallback: function (textStatus, errorThrown) {
+            failureCallback: function (textStatus: string, errorThrown: any) {
             console.log("[jspaste Error]: "+textStatus)
             }
         });
@@ -30,13 +24,7 @@ export class publicar {
 }
 
 export class obtener {
-    input: string;
-
-    constructor(message: string) {
-        this.input = message;
-    }
-
-    async obtener() {
+    async obtener(a: string) {
         let obtenido = null
         const userInteraction = new UserInteraction();
         var jsHelper = new JsHelper();
@@ -45,13 +33,13 @@ export class obtener {
         ajaxGetMgr.jsHelper = jsHelper;
         ajaxGetMgr.performAjaxGetJson
         await ajaxGetMgr.performAjaxGetJson(`${baseURL}/documents/${a}`, {
-            successCallback: function (result) {
+            successCallback: function (result: any) {
                 obtenido = result;
             }
         },
         {
-            failureCallback: function (textStatus, errorThrown) {
-                console.log("[jspaste Error]: "+res)
+            failureCallback: function (textStatus: string, errorThrown: any) {
+                console.log("[jspaste Error]: "+textStatus)
             }
         });
         return this;
