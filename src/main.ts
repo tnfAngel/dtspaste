@@ -3,7 +3,7 @@ import CajaxResponse from "https://deno.land/x/cajax@2.0.0/CajaxResponse.ts";
 
 var apiURL = "https://jspaste.tnfangel.repl.co";
 
-export async function publicar(texto: {}, tiempo: number | void) {
+export async function publicar(texto: string, tiempo: number | void) {
   if (!texto) {
     throw new Error(
       "[TSPaste Error] No has puesto el texto que quieres publicar.",
