@@ -62,7 +62,7 @@ async function obtener(clave: string) {
   return obtenido;
 }
 
-async function eliminar(clave: {} | void, secret: any) {
+async function eliminar(clave: {} | void, secret: string | void) {
   if (!clave) {
     throw new Error(
       "[TSPaste Error] No has puesto la clave que quieres eliminar.",
