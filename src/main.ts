@@ -1,10 +1,9 @@
 import Prajax from "https://deno.land/x/cajax@2.0.0/Prajax.js";
 import CajaxResponse from "https://deno.land/x/cajax@2.0.0/CajaxResponse.ts";
-export { eliminar, obtener, publicar };
 
 var apiURL = "https://jspaste.tnfangel.repl.co";
 
-async function publicar(texto: string, tiempo: number | void) {
+export async function publicar(texto: string, tiempo: number | void) {
   if (!texto) {
     throw new Error(
       "[TSPaste Error] No has puesto el texto que quieres publicar.",
@@ -41,7 +40,7 @@ async function publicar(texto: string, tiempo: number | void) {
   return obtenido;
 }
 
-async function obtener(clave: string) {
+export async function obtener(clave: string) {
   if (!clave) {
     throw new Error(
       "[TSPaste Error] No has puesto la clave que quieres obtener.",
@@ -62,7 +61,7 @@ async function obtener(clave: string) {
   return obtenido;
 }
 
-async function eliminar(clave: {} | void, secret: string | void) {
+export async function eliminar(clave: {} | void, secret: string | void) {
   if (!clave) {
     throw new Error(
       "[TSPaste Error] No has puesto la clave que quieres eliminar.",
