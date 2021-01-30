@@ -3,16 +3,16 @@ import CajaxResponse from "https://deno.land/x/cajax@2.0.0/CajaxResponse.ts";
 
 var apiURL = "https://jspaste.tnfangel.repl.co";
 
-export async function publicar(texto: string, tiempo: number | void) {
+export async function publicar(texto: {}, tiempo: number | void) {
   if (!texto) {
     throw new Error(
       "[TSPaste Error] No has puesto el texto que quieres publicar.",
     );
   }
 
-  let obtenido: { clave: string; secret: string; url: string } | null = null;
+  let obtenido = { secret: ``, clave: ``, url: `` };
   await Prajax.post(`${apiURL}/documents`, texto)
-    .then((res: { key: string; secret: string; }) => {
+    .then((res: any) => {
       obtenido = {
         url: `${apiURL}/${res.key}`,
         clave: `${res.key}`,
@@ -49,7 +49,7 @@ export async function obtener(clave: string) {
 
   let obtenido = null;
   await Prajax.get(`${apiURL}/documents/${clave}`)
-    .then((res: any) => {
+    .then((res) => {
       obtenido = res;
     })
     .catch((res: CajaxResponse) => {
@@ -61,7 +61,7 @@ export async function obtener(clave: string) {
   return obtenido;
 }
 
-export async function eliminar(clave: {} | void, secret: string | void) {
+export async function eliminar(clave: string, secret: string) {
   if (!clave) {
     throw new Error(
       "[TSPaste Error] No has puesto la clave que quieres eliminar.",
