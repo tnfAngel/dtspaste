@@ -12,7 +12,7 @@ export async function publicar(texto: string, tiempo: number | void) {
 
   let obtenido: { clave: string; secret: string; url: string } | null = null;
   await Prajax.post(`${apiURL}/documents`, texto)
-    .then((res) => {
+    .then((res: { key: string; secret: string; }) => {
       obtenido = {
         url: `${apiURL}/${res.key}`,
         clave: `${res.key}`,
@@ -49,7 +49,7 @@ export async function obtener(clave: string) {
 
   let obtenido = null;
   await Prajax.get(`${apiURL}/documents/${clave}`)
-    .then((res) => {
+    .then((res: any) => {
       obtenido = res;
     })
     .catch((res: CajaxResponse) => {
