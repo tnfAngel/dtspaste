@@ -1,1 +1,1 @@
-export * from "./src/tspaste.ts";
+export * from "./src/main.ts";
