@@ -10,7 +10,12 @@ export async function publicar(texto: string, tiempo?: number) {
     );
   }
 
-  let obtenido = { clave: "", secret: "", url: "", debug: {} };
+  let obtenido = {
+    url: "",
+    clave: "",
+    secret: "",
+    debug: {},
+  };
 
   await Prajax.post(`${baseURL}/documents`, texto)
     .then((res: any) => {
@@ -52,11 +57,17 @@ export async function obtener(clave: string) {
     );
   }
 
-  let obtenido = { key: ``, data: `` };
+  let obtenido = {
+    key: ``,
+    data: ``,
+  };
 
   await Prajax.get(`${baseURL}/documents/${clave}`)
     .then((res: any) => {
-      obtenido = { key: clave, data: res.responseText };
+      obtenido = {
+        key: clave,
+        data: res.responseText,
+      };
     })
     .catch((res: CajaxResponse) => {
       throw new Error(`[TSPaste Error] (${res.status}) ${res.responseText}`);
