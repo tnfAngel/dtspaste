@@ -29,7 +29,7 @@ console.log(respuesta);
 
 Obtiene un codigo de jspaste, usando su clave unica.
 ```typescript
-import { publicar } from "...";
+import { obtener } from "...";
 
 const respuesta = await obtener("abcdefgh");
 
@@ -47,7 +47,7 @@ console.log(respuesta);
 
 Elimina un codigo de jspaste, usando su clave unica y secret.
 ```typescript
-import { publicar } from "...";
+import { eliminar } from "...";
 
 const respuesta = await eliminar('abcdefgh', 'zyzasaasdtslasebjd8w9sa');
 
