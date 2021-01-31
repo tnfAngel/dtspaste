@@ -13,7 +13,7 @@ export async function publicar(texto: string, tiempo?: number) {
   let obtenido: any;
 
   Cajax.post(`${baseURL}/documents`, texto, {
-    Headers: { ContentType: "application/json; charset=utf-8" },
+    header: { contentType: "application/json; charset=utf-8" },
   })
     .then((res: any) => {
       obtenido = res.response;
