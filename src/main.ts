@@ -14,7 +14,7 @@ export async function publicar(texto: string, tiempo?: number) {
 
   await Prajax.post(`${baseURL}/documents`, texto)
     .then((res: any) => {
-      obtenido = res.response;
+      obtenido = res.response = JSON.parse(obtenido);
     })
     .catch((err: CajaxResponse) => {
       throw new Error(`[TSPaste Error] (${err.status})  ${err.responseText}`);
@@ -25,8 +25,6 @@ export async function publicar(texto: string, tiempo?: number) {
       "[TSPaste Error] Ocurrio un error desconocido obteniendo los datos.",
     );
   }
-
-  obtenido = JSON.parse(obtenido);
 
   if (tiempo) {
     if (isNaN(tiempo)) {
