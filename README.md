@@ -10,10 +10,10 @@
 
 **Funciones**
 
-- Publica un código a jspaste, devuelve la **Key** y el **Secret**.
+- Publica un código a jspaste, devuelve la **Key** y el **Secret**. // Deshabilitado temporalmente
 
 ```typescript
-import { publicar } from "...";
+import { publicar } from "https://deno.land/x/tspaste/mod.ts";
 
 const respuesta = await publicar("Hello, world!");
 
@@ -30,7 +30,7 @@ console.log(respuesta);
 - Obtiene un código de jspaste, usando su **Key**.
 
 ```typescript
-import { obtener } from "...";
+import { obtener } from "https://deno.land/x/tspaste/mod.ts";
 
 const respuesta = await obtener("abcdefgh");
 
@@ -44,10 +44,10 @@ console.log(respuesta);
 */
 ```
 
-- Elimina un código de jspaste, usando su **Key** y **Secret**.
+- Elimina un código de jspaste, usando su **Key** y **Secret**. // Deshabilitado temporalmente
 
 ```typescript
-import { eliminar } from "...";
+import { eliminar } from "https://deno.land/x/tspaste/mod.ts";
 
 const respuesta = await eliminar("abcdefgh", "zyzasaasdtslasebjd8w9sa");
 
