@@ -25,7 +25,7 @@ export async function publicar(texto: string, tiempo?: number) {
     .catch((res: CajaxResponse) => {
       throw new Error(`[TSPaste Error] (${res.status}) ${res.responseText}`);
     });
-
+  console.log(urlobt);
   if (!obtenido) {
     throw new Error(
       "[TSPaste Error] Ocurrio un error desconocido obteniendo los datos.",
