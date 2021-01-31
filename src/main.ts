@@ -1,4 +1,4 @@
-import Prajax from "https://deno.land/x/cajax@2.0.0/Prajax.js";
+import Cajax from "https://deno.land/x/cajax@2.0.0/Cajax.js";
 import CajaxResponse from "https://deno.land/x/cajax@2.0.0/CajaxResponse.ts";
 
 const baseURL = "https://jspaste.tnfangel.repl.co";
@@ -12,7 +12,7 @@ export async function publicar(texto: string, tiempo?: number) {
 
   let obtenido: any;
 
-  await Prajax.post(`${baseURL}/documents`, texto, {
+  await Cajax.post(`${baseURL}/documents`, texto, {
     contentType: "application/json; charset=utf-8",
   })
     .then((res: any) => {
@@ -52,7 +52,7 @@ export async function obtener(key: string) {
 
   let obtenido: any;
 
-  await Prajax.get(`${baseURL}/documents/${key}`)
+  await Cajax.get(`${baseURL}/documents/${key}`)
     .then((res: any) => {
       obtenido = res.response;
       obtenido = JSON.parse(obtenido);
@@ -85,7 +85,7 @@ export async function eliminar(key: string, secret: string) {
 
   let obtenido = false;
 
-  await Prajax.post(`${baseURL}/documents/${key}/delete`, key, {
+  await Cajax.post(`${baseURL}/documents/${key}/delete`, key, {
     header: { "Secret": `${secret}` },
   })
     .then(() => {
