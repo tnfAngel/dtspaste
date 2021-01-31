@@ -10,7 +10,7 @@ export async function publicar(texto: string, tiempo?: number) {
     );
   }
 
-  let obtenido = { secret: ``, clave: ``, url: `` };
+  let obtenido = { debug: ``, secret: ``, clave: ``, url: `` };
   await Prajax.post(`${baseURL}/documents`, texto)
     .then((res: any) => {
       obtenido = {
