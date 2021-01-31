@@ -12,7 +12,9 @@ export async function publicar(texto: string, tiempo?: number) {
 
   let obtenido: any;
 
-  await Prajax.post(`${baseURL}/documents`, texto)
+  await Prajax.post(`${baseURL}/documents`, texto, {
+    contentType: "application/json; charset=utf-8",
+  })
     .then((res: any) => {
       obtenido = res.response;
       obtenido = JSON.parse(obtenido);
@@ -41,8 +43,8 @@ export async function publicar(texto: string, tiempo?: number) {
   return obtenido;
 }
 
-export async function obtener(clave: string) {
-  if (!clave) {
+export async function obtener(key: string) {
+  if (!key) {
     throw new Error(
       "[TSPaste Error] No has puesto la clave que quieres obtener.",
     );
@@ -50,7 +52,7 @@ export async function obtener(clave: string) {
 
   let obtenido: any;
 
-  await Prajax.get(`${baseURL}/documents/${clave}`)
+  await Prajax.get(`${baseURL}/documents/${key}`)
     .then((res: any) => {
       obtenido = res.response;
       obtenido = JSON.parse(obtenido);
@@ -68,8 +70,8 @@ export async function obtener(clave: string) {
   return obtenido;
 }
 
-export async function eliminar(clave: string, secret: string) {
-  if (!clave) {
+export async function eliminar(key: string, secret: string) {
+  if (!key) {
     throw new Error(
       "[TSPaste Error] No has puesto la clave que quieres eliminar.",
     );
@@ -83,7 +85,7 @@ export async function eliminar(clave: string, secret: string) {
 
   let obtenido = false;
 
-  await Prajax.post(`${baseURL}/documents/${clave}/delete`, clave, {
+  await Prajax.post(`${baseURL}/documents/${key}/delete`, key, {
     header: { "Secret": `${secret}` },
   })
     .then(() => {
