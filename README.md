@@ -1,4 +1,4 @@
-# ignorar xd
+# ignorar xd 
 
 ![logo](https://cdn.discordapp.com/attachments/700345457343201314/804447945814441994/japastelogo.png)
 
