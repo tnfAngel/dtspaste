@@ -10,9 +10,7 @@
 
 **Funciones**
 
-- Publicar:
-
-Publica un código a jspaste, devuelve la **Key** y el **Secret**.
+- Publica un código a jspaste, devuelve la **Key** y el **Secret**.
 
 ```typescript
 import { publicar } from "...";
@@ -29,9 +27,7 @@ console.log(respuesta);
 */
 ```
 
-- Obtener:
-
-Obtiene un código de jspaste, usando su **Key**.
+- Obtiene un código de jspaste, usando su **Key**.
 
 ```typescript
 import { obtener } from "...";
@@ -48,9 +44,7 @@ console.log(respuesta);
 */
 ```
 
-- Eliminar:
-
-Elimina un código de jspaste, usando su **Key** y **Secret**.
+- Elimina un código de jspaste, usando su **Key** y **Secret**.
 
 ```typescript
 import { eliminar } from "...";
