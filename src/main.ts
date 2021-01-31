@@ -51,7 +51,7 @@ export async function obtener(clave: string) {
 
   await Prajax.get(`${baseURL}/documents/${clave}`)
     .then((res: any) => {
-      obtenido = [res.response];
+      obtenido = res.response;
     })
     .catch((res: CajaxResponse) => {
       throw new Error(`[TSPaste Error] (${res.status}) ${res.responseText}`);
