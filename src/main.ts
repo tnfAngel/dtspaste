@@ -16,6 +16,7 @@ export async function publicar(texto: string, tiempo?: number) {
     .then((res: any) => {
       obtenido = res.response;
       obtenido = JSON.parse(obtenido);
+      obtenido.push({ url: baseURL + "/" + obtenido.key });
     })
     .catch((err: CajaxResponse) => {
       throw new Error(`[TSPaste Error] (${err.status})  ${err.responseText}`);
