@@ -10,6 +10,8 @@
 
 Publica un codigo a jspaste, devuelve el enlace entero.
 ```typescript
+import { publicar } from "...";
+
 const respuesta = await publicar("Hello, world!");
 
 console.log(respuesta);
@@ -27,6 +29,7 @@ console.log(respuesta);
 
 Obtiene un codigo de jspaste, usando su clave unica.
 ```typescript
+import { publicar } from "...";
 
 const respuesta = await obtener("abcdefgh");
 
@@ -44,6 +47,7 @@ console.log(respuesta);
 
 Elimina un codigo de jspaste, usando su clave unica y secret.
 ```typescript
+import { publicar } from "...";
 
 const respuesta = await eliminar('abcdefgh', 'zyzasaasdtslasebjd8w9sa');
 
