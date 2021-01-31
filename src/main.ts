@@ -10,20 +10,16 @@ export async function publicar(texto: string, tiempo?: number) {
     );
   }
 
-  let obtenido = {
-    url: {},
-    clave: "",
-    secret: "",
-    debug: {},
-  };
+  let obtenido: any;
+  let urlobt: any;
 
   await Prajax.post(`${baseURL}/documents`, texto)
     .then((res: any) => {
+      urlobt = res.responseText;
       obtenido = {
-        url: baseURL + "/" + res.responseText.key + "or" + res.responseText,
-        clave: res.responseText.key,
-        secret: res.responseText.secret,
-        debug: res,
+        url: baseURL + "/" + urlobt.key,
+        key: urlobt.key,
+        secret: urlobt.secret,
       };
     })
     .catch((res: CajaxResponse) => {
@@ -43,7 +39,7 @@ export async function publicar(texto: string, tiempo?: number) {
       );
     }
     setTimeout(async function () {
-      await eliminar(obtenido.clave, obtenido.secret);
+      await eliminar(urlobt.key, urlobt.secret);
     }, tiempo);
   }
 
