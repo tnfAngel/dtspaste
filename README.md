@@ -1,5 +1,3 @@
-![logo](https://cdn.discordapp.com/attachments/700345457343201314/804447945814441994/japastelogo.png)
-
 # TSPaste
 - Port del paquete de [jspaste](https://www.npmjs.com/package/jspaste). Publica y obten datos de [jspaste](https://jspaste.tnfangel.repl.co/) en Typescript.
 
