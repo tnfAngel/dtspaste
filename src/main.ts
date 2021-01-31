@@ -12,8 +12,8 @@ export async function publicar(texto: string, tiempo?: number) {
 
   let obtenido: any;
 
-  await Cajax.post(`${baseURL}/documents`, texto, {
-    contentType: "application/json; charset=utf-8",
+  Cajax.post(`${baseURL}/documents`, texto, {
+    Headers: { ContentType: "application/json; charset=utf-8" },
   })
     .then((res: any) => {
       obtenido = res.response;
@@ -52,7 +52,7 @@ export async function obtener(key: string) {
 
   let obtenido: any;
 
-  await Cajax.get(`${baseURL}/documents/${key}`)
+  Cajax.get(`${baseURL}/documents/${key}`)
     .then((res: any) => {
       obtenido = res.response;
       obtenido = JSON.parse(obtenido);
@@ -85,7 +85,7 @@ export async function eliminar(key: string, secret: string) {
 
   let obtenido = false;
 
-  await Cajax.post(`${baseURL}/documents/${key}/delete`, key, {
+  Cajax.post(`${baseURL}/documents/${key}/delete`, key, {
     header: { "Secret": `${secret}` },
   })
     .then(() => {
