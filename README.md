@@ -13,7 +13,7 @@
 
 - Publicar:
 
-Publica un codigo a jspaste, devuelve el enlace entero.
+Publica un codigo a jspaste, devuelve la key.
 
 ```typescript
 import { publicar } from "...";
