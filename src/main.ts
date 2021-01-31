@@ -1,9 +1,9 @@
 import Prajax from "https://deno.land/x/cajax@2.0.0/Prajax.js";
 import CajaxResponse from "https://deno.land/x/cajax@2.0.0/CajaxResponse.ts";
 
-var apiURL = "https://jspaste.tnfangel.repl.co";
+const baseURL = "https://jspaste.tnfangel.repl.co";
 
-export async function publicar(texto: string, tiempo: number | void) {
+export async function publicar(texto: string, tiempo?: number) {
   if (!texto) {
     throw new Error(
       "[TSPaste Error] No has puesto el texto que quieres publicar.",
@@ -11,22 +11,24 @@ export async function publicar(texto: string, tiempo: number | void) {
   }
 
   let obtenido = { secret: ``, clave: ``, url: `` };
-  await Prajax.post(`${apiURL}/documents`, texto)
+  await Prajax.post(`${baseURL}/documents`, texto)
     .then((res: any) => {
       obtenido = {
-        url: `${apiURL}/${res.key}`,
+        url: `${baseURL}/${res.key}`,
         clave: `${res.key}`,
         secret: `${res.secret}`,
       };
     })
     .catch((res: CajaxResponse) => {
-      throw `[TSPaste Error] (${res.status}) ${res.responseText}`;
+      throw new Error(`[TSPaste Error] (${res.status}) ${res.responseText}`);
     });
+
   if (!obtenido) {
     throw new Error(
       "[TSPaste Error] Ocurrio un error desconocido obteniendo los datos.",
     );
   }
+
   if (tiempo) {
     if (isNaN(tiempo)) {
       throw new Error(
@@ -47,16 +49,18 @@ export async function obtener(clave: string) {
     );
   }
 
-  let obtenido = null;
-  await Prajax.get(`${apiURL}/documents/${clave}`)
-    .then((res) => {
+  let obtenido = { key: ``, data: `` };
+  await Prajax.get(`${baseURL}/documents/${clave}`)
+    .then((res: any) => {
       obtenido = res;
     })
     .catch((res: CajaxResponse) => {
-      throw `[TSPaste Error] (${res.status}) ${res.responseText}`;
+      throw new Error(`[TSPaste Error] (${res.status}) ${res.responseText}`);
     });
   if (!obtenido) {
-    throw "[TSPaste Error] Ocurrio un error desconocido obteniendo los datos.";
+    throw new Error(
+      "[TSPaste Error] Ocurrio un error desconocido obteniendo los datos.",
+    );
   }
   return obtenido;
 }
@@ -74,7 +78,7 @@ export async function eliminar(clave: string, secret: string) {
   }
 
   let obtenido = false;
-  await Prajax.post(`${apiURL}/documents/${clave}/delete`, clave, {
+  await Prajax.post(`${baseURL}/documents/${clave}/delete`, clave, {
     header: { "Secret": `${secret}` },
   })
     .then(() => {
@@ -82,10 +86,20 @@ export async function eliminar(clave: string, secret: string) {
     })
     .catch((res: CajaxResponse) => {
       obtenido = false;
-      throw `[TSPaste Error] (${res.status}) ${res.responseText}`;
+      throw new Error(`[TSPaste Error] (${res.status}) ${res.responseText}`);
     });
   if (!obtenido) {
-    throw "[TSPaste Error] Ocurrio un error desconocido obteniendo los datos.";
+    throw new Error(
+      "[TSPaste Error] Ocurrio un error desconocido obteniendo los datos.",
+    );
   }
   return obtenido;
 }
+
+export const paquete = {
+  version: "6.0.0",
+  creador: "tnfAngel#8642",
+  porter: "AlexTek#0840",
+  creditos: Array("ILuck ✯Team VR✯丂匚#2060", "Lil MARCROCK22#2222"),
+  web: "https://jspaste.tnfangel.repl.co",
+};
