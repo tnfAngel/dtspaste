@@ -3,6 +3,7 @@ import CajaxResponse from "https://deno.land/x/cajax@2.0.0/CajaxResponse.ts";
 
 const baseURL = "https://jspaste.tnfangel.repl.co";
 
+/* DESHABILITADO TEMPORALMENTE
 export async function publicar(texto: string, tiempo?: number) {
   if (!texto) {
     throw new Error(
@@ -12,9 +13,7 @@ export async function publicar(texto: string, tiempo?: number) {
 
   let obtenido: any;
 
-  Cajax.post(`${baseURL}/documents`, texto, {
-    header: { contentType: "application/json; charset=utf-8" },
-  })
+  Cajax.post(`${baseURL}/documents`, texto)
     .then((res: any) => {
       obtenido = res.response;
       obtenido = JSON.parse(obtenido);
@@ -41,7 +40,7 @@ export async function publicar(texto: string, tiempo?: number) {
   }
 
   return obtenido;
-}
+} */
 
 export async function obtener(key: string) {
   if (!key) {
@@ -49,7 +48,6 @@ export async function obtener(key: string) {
       "[TSPaste Error] No has puesto la clave que quieres obtener.",
     );
   }
-
 
   let obtenido: any;
 
@@ -71,6 +69,7 @@ export async function obtener(key: string) {
   return obtenido;
 }
 
+/* DESHABILITADO TEMPORALMENTE
 export async function eliminar(key: string, secret: string) {
   if (!key) {
     throw new Error(
@@ -104,7 +103,7 @@ export async function eliminar(key: string, secret: string) {
   }
 
   return obtenido;
-}
+}  */
 
 export const paquete = {
   version: "6.0.0",
