@@ -11,21 +11,15 @@ export async function publicar(texto: string, tiempo?: number) {
   }
 
   let obtenido: any;
-  let urlobt: any;
 
   await Prajax.post(`${baseURL}/documents`, texto)
     .then((res: any) => {
-      urlobt = res.responseText;
-      obtenido = {
-        url: baseURL + "/" + urlobt.key,
-        key: urlobt.key,
-        secret: urlobt.secret,
-      };
+      obtenido = res.response;
     })
     .catch((res: CajaxResponse) => {
       throw new Error(`[TSPaste Error] (${res.status})  ${res.responseText}`);
     });
-  console.log(urlobt);
+
   if (!obtenido) {
     throw new Error(
       "[TSPaste Error] Ocurrio un error desconocido obteniendo los datos.",
@@ -39,7 +33,7 @@ export async function publicar(texto: string, tiempo?: number) {
       );
     }
     setTimeout(async function () {
-      await eliminar(urlobt.key, urlobt.secret);
+      await eliminar(obtenido.key, obtenido.secret);
     }, tiempo);
   }
 
@@ -53,17 +47,11 @@ export async function obtener(clave: string) {
     );
   }
 
-  let obtenido = {
-    key: ``,
-    data: ``,
-  };
+  let obtenido: any;
 
   await Prajax.get(`${baseURL}/documents/${clave}`)
     .then((res: any) => {
-      obtenido = {
-        key: clave,
-        data: res.responseText,
-      };
+      obtenido = [res.response];
     })
     .catch((res: CajaxResponse) => {
       throw new Error(`[TSPaste Error] (${res.status}) ${res.responseText}`);
