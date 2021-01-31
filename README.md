@@ -1,14 +1,20 @@
 # TSPaste
-- Port del paquete de [jspaste](https://www.npmjs.com/package/jspaste). Publica y obten datos de [jspaste](https://jspaste.tnfangel.repl.co/) en Typescript.
+
+- Port del paquete de [jspaste](https://www.npmjs.com/package/jspaste). Publica
+  y obten datos de [jspaste](https://jspaste.tnfangel.repl.co/) en Typescript.
 
 - El modulo es muy rapido, se tiene que usar con async/await
 
 - El paquete original esta hecho por `tnfAngel#8642`
+
 # Documentacion
+
 **Funciones**
+
 - Publicar:
 
 Publica un codigo a jspaste, devuelve el enlace entero.
+
 ```typescript
 import { publicar } from "...";
 
@@ -28,6 +34,7 @@ console.log(respuesta);
 - Obtener:
 
 Obtiene un codigo de jspaste, usando su clave unica.
+
 ```typescript
 import { obtener } from "...";
 
@@ -46,10 +53,11 @@ console.log(respuesta);
 - Eliminar:
 
 Elimina un codigo de jspaste, usando su clave unica y secret.
+
 ```typescript
 import { eliminar } from "...";
 
-const respuesta = await eliminar('abcdefgh', 'zyzasaasdtslasebjd8w9sa');
+const respuesta = await eliminar("abcdefgh", "zyzasaasdtslasebjd8w9sa");
 
 console.log(respuesta);
 
@@ -57,6 +65,7 @@ console.log(respuesta);
 true
 */
 ```
+
 # Ejemplo completo
 
 - Ejemplo completo usando jspaste
@@ -67,6 +76,7 @@ true
 
 # Instalacion:
 
-_Si tienes problemas con la instalacion puedes unirte al **[servidor de soporte de Discord](https://discord.gg/8RNAdpK)**._
+_Si tienes problemas con la instalacion puedes unirte al
+**[servidor de soporte de Discord](https://discord.gg/8RNAdpK)**._
 
 1. `...`

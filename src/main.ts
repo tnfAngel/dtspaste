@@ -10,14 +10,14 @@ export async function publicar(texto: string, tiempo?: number) {
     );
   }
 
-  let obtenido = { debug: {}, secret: ``, clave: ``, url: `` };
+  let obtenido = { clave: "", secret: "", url: "", debug: {} };
 
   await Prajax.post(`${baseURL}/documents`, texto)
     .then((res: any) => {
       obtenido = {
-        url: `${baseURL}/${res.key}`,
-        clave: `${res.key}`,
-        secret: `${res.secret}`,
+        url: baseURL + "/" + res.responseText.key,
+        clave: res.responseText.key,
+        secret: res.responseText.secret,
         debug: res,
       };
     })
@@ -89,7 +89,7 @@ export async function eliminar(clave: string, secret: string) {
   await Prajax.post(`${baseURL}/documents/${clave}/delete`, clave, {
     header: { "Secret": `${secret}` },
   })
-    .then(() => {
+    .then((res: any) => {
       obtenido = true;
     })
     .catch((res: CajaxResponse) => {
