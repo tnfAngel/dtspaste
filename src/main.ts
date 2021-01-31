@@ -16,8 +16,8 @@ export async function publicar(texto: string, tiempo?: number) {
     .then((res: any) => {
       obtenido = res.response;
     })
-    .catch((res: CajaxResponse) => {
-      throw new Error(`[TSPaste Error] (${res.status})  ${res.responseText}`);
+    .catch((err: CajaxResponse) => {
+      throw new Error(`[TSPaste Error] (${err.status})  ${err.responseText}`);
     });
 
   if (!obtenido) {
@@ -25,6 +25,8 @@ export async function publicar(texto: string, tiempo?: number) {
       "[TSPaste Error] Ocurrio un error desconocido obteniendo los datos.",
     );
   }
+
+  obtenido = JSON.parse(obtenido);
 
   if (tiempo) {
     if (isNaN(tiempo)) {
@@ -53,8 +55,8 @@ export async function obtener(clave: string) {
     .then((res: any) => {
       obtenido = res.response;
     })
-    .catch((res: CajaxResponse) => {
-      throw new Error(`[TSPaste Error] (${res.status}) ${res.responseText}`);
+    .catch((err: CajaxResponse) => {
+      throw new Error(`[TSPaste Error] (${err.status}) ${err.responseText}`);
     });
 
   if (!obtenido) {
@@ -84,12 +86,12 @@ export async function eliminar(clave: string, secret: string) {
   await Prajax.post(`${baseURL}/documents/${clave}/delete`, clave, {
     header: { "Secret": `${secret}` },
   })
-    .then((res: any) => {
+    .then(() => {
       obtenido = true;
     })
-    .catch((res: CajaxResponse) => {
+    .catch((err: CajaxResponse) => {
       obtenido = false;
-      throw new Error(`[TSPaste Error] (${res.status}) ${res.responseText}`);
+      throw new Error(`[TSPaste Error] (${err.status}) ${err.responseText}`);
     });
 
   if (!obtenido) {
