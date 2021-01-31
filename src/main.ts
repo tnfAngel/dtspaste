@@ -11,6 +11,7 @@ export async function publicar(texto: string, tiempo?: number) {
   }
 
   let obtenido = { debug: ``, secret: ``, clave: ``, url: `` };
+
   await Prajax.post(`${baseURL}/documents`, texto)
     .then((res: any) => {
       obtenido = {
@@ -40,6 +41,7 @@ export async function publicar(texto: string, tiempo?: number) {
       await eliminar(obtenido.clave, obtenido.secret);
     }, tiempo);
   }
+
   return obtenido;
 }
 
@@ -51,6 +53,7 @@ export async function obtener(clave: string) {
   }
 
   let obtenido = { key: ``, data: `` };
+
   await Prajax.get(`${baseURL}/documents/${clave}`)
     .then((res: any) => {
       obtenido = { key: clave, data: res.responseText };
@@ -58,11 +61,13 @@ export async function obtener(clave: string) {
     .catch((res: CajaxResponse) => {
       throw new Error(`[TSPaste Error] (${res.status}) ${res.responseText}`);
     });
+
   if (!obtenido) {
     throw new Error(
       "[TSPaste Error] Ocurrio un error desconocido obteniendo los datos.",
     );
   }
+
   return obtenido;
 }
 
@@ -72,6 +77,7 @@ export async function eliminar(clave: string, secret: string) {
       "[TSPaste Error] No has puesto la clave que quieres eliminar.",
     );
   }
+
   if (!secret) {
     throw new Error(
       "[TSPaste Error] Tienes que poner el secret de la clave para poder eliminarla.",
@@ -79,6 +85,7 @@ export async function eliminar(clave: string, secret: string) {
   }
 
   let obtenido = false;
+
   await Prajax.post(`${baseURL}/documents/${clave}/delete`, clave, {
     header: { "Secret": `${secret}` },
   })
@@ -89,11 +96,13 @@ export async function eliminar(clave: string, secret: string) {
       obtenido = false;
       throw new Error(`[TSPaste Error] (${res.status}) ${res.responseText}`);
     });
+
   if (!obtenido) {
     throw new Error(
       "[TSPaste Error] Ocurrio un error desconocido obteniendo los datos.",
     );
   }
+
   return obtenido;
 }
 
