@@ -10,7 +10,7 @@ export async function publicar(texto: string, tiempo?: number) {
     );
   }
 
-  let obtenido = { debug: ``, secret: ``, clave: ``, url: `` };
+  let obtenido = { debug: {}, secret: ``, clave: ``, url: `` };
 
   await Prajax.post(`${baseURL}/documents`, texto)
     .then((res: any) => {
@@ -18,7 +18,7 @@ export async function publicar(texto: string, tiempo?: number) {
         url: `${baseURL}/${res.key}`,
         clave: `${res.key}`,
         secret: `${res.secret}`,
-        debug: `${res}`,
+        debug: res,
       };
     })
     .catch((res: CajaxResponse) => {
