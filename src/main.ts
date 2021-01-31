@@ -17,6 +17,7 @@ export async function publicar(texto: string, tiempo?: number) {
         url: `${baseURL}/${res.key}`,
         clave: `${res.key}`,
         secret: `${res.secret}`,
+        debug: `${res}`,
       };
     })
     .catch((res: CajaxResponse) => {
