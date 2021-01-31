@@ -50,6 +50,7 @@ export async function obtener(key: string) {
     );
   }
 
+
   let obtenido: any;
 
   Cajax.get(`${baseURL}/documents/${key}`)
