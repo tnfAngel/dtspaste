@@ -54,6 +54,6 @@ const respuesta = await eliminar("abcdefgh", "zyzasaasdtslasebjd8w9sa");
 console.log(respuesta);
 
 /*
-true
+true 
 */
 ```
