@@ -1,5 +1,10 @@
 # TSPaste
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=AlexxTek_tspaste&metric=alert_status)](https://sonarcloud.io/dashboard?id=AlexxTek_tspaste)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=AlexxTek_tspaste&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=AlexxTek_tspaste)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=AlexxTek_tspaste&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=AlexxTek_tspaste)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=AlexxTek_tspaste&metric=security_rating)](https://sonarcloud.io/dashboard?id=AlexxTek_tspaste)
+
 - Port de [jspaste](https://www.npmjs.com/package/jspaste). Pública y obtén datos de [jspaste](https://jspaste.tnfangel.repl.co/) en Typescript.
 
 - El paquete original está hecho por `tnfAngel#8642`
