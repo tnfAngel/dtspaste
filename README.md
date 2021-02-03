@@ -1,6 +1,7 @@
 # TSPaste
 
-- Port de [jspaste](https://www.npmjs.com/package/jspaste). Pública y obtén datos de [jspaste](https://jspaste.tnfangel.repl.co/) en Typescript.
+- Port de [jspaste](https://www.npmjs.com/package/jspaste). Pública y obtén
+  datos de [jspaste](https://jspaste.tnfangel.repl.co/) en Typescript.
 
 - El paquete original está hecho por `tnfAngel#8642`
 
@@ -10,7 +11,8 @@
 
 **Funciones**
 
-- Publica un código a jspaste, devuelve la **Key** y el **Secret**. // Deshabilitado temporalmente
+- Publica un código a jspaste, devuelve la **Key** y el **Secret**. //
+  Deshabilitado temporalmente
 
 ```typescript
 import { publicar } from "https://deno.land/x/tspaste/mod.ts";
@@ -44,7 +46,8 @@ console.log(respuesta);
 */
 ```
 
-- Elimina un código de jspaste, usando su **Key** y **Secret**. // Deshabilitado temporalmente
+- Elimina un código de jspaste, usando su **Key** y **Secret**. // Deshabilitado
+  temporalmente
 
 ```typescript
 import { eliminar } from "https://deno.land/x/tspaste/mod.ts";
