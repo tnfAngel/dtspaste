@@ -15,19 +15,19 @@ export async function publicar(texto: string, tiempo?: number) {
   axios(
     {
       method: "post",
-      url: `${baseURL}/documents`,
+      baseURL: `${baseURL}/documents`,
       data: texto,
+      timeout: 5000,
       responseType: "json",
       responseEncoding: "utf8",
     },
   )
-    .then(function (res: any) {
+    .then(function (res: { data: any }) {
       obtenido = res.data;
       obtenido = JSON.parse(obtenido);
     })
-    .catch(function (err: any) {
+    .catch(function (err: { status: any; statusText: any }) {
       console.error(`[TSPaste Error] (${err.status})  ${err.statusText}`);
-      return;
     });
 
   if (!obtenido) {

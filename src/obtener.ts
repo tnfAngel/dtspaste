@@ -13,19 +13,21 @@ export async function obtener(key: string) {
 
   axios(
     {
-      method: "GET",
-      url: `${baseURL}/documents/${key}`,
+      method: "get",
+      baseURL: `${baseURL}/documents/${key}`,
       data: key,
+      timeout: 5000,
+      responseType: "json",
+      responseEncoding: "utf8",
     },
   )
-    .then(function (res: any) {
+    .then(function (res: { data: any }) {
       console.log(res);
       obtenido = res.data;
       obtenido = JSON.parse(obtenido);
     })
-    .catch(function (err: any) {
+    .catch(function (err: { status: any; statusText: any }) {
       console.error(`[TSPaste Error] (${err.status})  ${err.statusText}`);
-      return;
     });
 
   if (!obtenido) {

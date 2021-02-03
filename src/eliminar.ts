@@ -19,18 +19,20 @@ export async function eliminar(key: string, secret: string) {
 
   axios(
     {
-      method: "POST",
-      url: `${baseURL}/documents/${key}/delete`,
-      data: key,
+      method: "post",
+      baseURL: `${baseURL}/documents/${key}/delete`,
       headers: { "Secret": `${secret}` },
+      data: key,
+      timeout: 5000,
+      responseType: "json",
+      responseEncoding: "utf8",
     },
   )
-    .then(function () {
+    .then(() => {
       obtenido = true;
     })
-    .catch(function (err: any) {
+    .catch(function (err: { status: any; statusText: any }) {
       console.error(`[TSPaste Error] (${err.status})  ${err.statusText}`);
-      return;
     });
 
   if (!obtenido) {
