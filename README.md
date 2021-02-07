@@ -1,4 +1,4 @@
-# TSPaste
+# DTSPaste
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=AlexxTek_tspaste&metric=alert_status)](https://sonarcloud.io/dashboard?id=AlexxTek_tspaste)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=AlexxTek_tspaste&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=AlexxTek_tspaste)

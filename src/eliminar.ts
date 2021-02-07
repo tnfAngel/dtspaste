@@ -4,13 +4,13 @@ export async function eliminar(key: string, secret: string) {
   try {
     if (!key) {
       throw console.error(
-        "[TSPaste Error] No has puesto la key que quieres eliminar.",
+        "[DTSPaste Error] No has puesto la key que quieres eliminar.",
       );
     }
 
     if (!secret) {
       throw console.error(
-        "[TSPaste Error] No has puesto el secret para poder eliminar la key.",
+        "[DTSPaste Error] No has puesto el secret para poder eliminar la key.",
       );
     }
 
@@ -26,12 +26,12 @@ export async function eliminar(key: string, secret: string) {
       obtenido = true;
     }).catch((err) => {
       obtenido = false;
-      console.error(`[TSPaste Error] [${err.status}] ==> ${err.statusText}`);
+      console.error(`[DTSPaste Error] [${err.status}] ==> ${err.statusText}`);
     });
 
     if (!obtenido) {
       throw console.error(
-        "[TSPaste Error] No se obtuvo ninguna respuesta del servidor.\nKey: " +
+        "[DTSPaste Error] No se obtuvo ninguna respuesta del servidor.\nKey: " +
           key + "\nSecret: " + secret,
       );
     }
@@ -39,7 +39,7 @@ export async function eliminar(key: string, secret: string) {
     return obtenido;
   } catch (error) {
     throw console.error(
-      "[TSPaste Error] Ocurrió un error desconocido obteniendo los datos.",
+      "[DTSPaste Error] Ocurrió un error desconocido obteniendo los datos.",
     );
   }
 }

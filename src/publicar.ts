@@ -6,7 +6,7 @@ export async function publicar(texto: string, tiempo?: number) {
   try {
     if (!texto) {
       throw console.error(
-        "[TSPaste Error] No has puesto el texto que quieres publicar.",
+        "[DTSPaste Error] No has puesto el texto que quieres publicar.",
       );
     }
 
@@ -19,13 +19,13 @@ export async function publicar(texto: string, tiempo?: number) {
       obtenido = res.json();
     }).catch((err) => {
       throw console.error(
-        `[TSPaste Error] [${err.status}] ==> ${err.statusText}`,
+        `[DTSPaste Error] [${err.status}] ==> ${err.statusText}`,
       );
     });
 
     if (!obtenido) {
       throw console.error(
-        "[TSPaste Error] No se obtuvo ninguna respuesta del servidor.\nMensaje para publicar: " +
+        "[DTSPaste Error] No se obtuvo ninguna respuesta del servidor.\nMensaje para publicar: " +
           texto,
       );
     }
@@ -33,7 +33,7 @@ export async function publicar(texto: string, tiempo?: number) {
     if (tiempo) {
       if (isNaN(tiempo)) {
         console.error(
-          "[TSPaste Error] El numero es invalido, no se hará nada...",
+          "[DTSPaste Error] El numero es invalido, no se hará nada...",
         );
         return obtenido;
       }
@@ -45,7 +45,7 @@ export async function publicar(texto: string, tiempo?: number) {
     return obtenido;
   } catch (error) {
     throw console.error(
-      "[TSPaste Error] Ocurrió un error desconocido obteniendo los datos.",
+      "[DTSPaste Error] Ocurrió un error desconocido obteniendo los datos.",
     );
   }
 }

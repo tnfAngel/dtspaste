@@ -4,7 +4,7 @@ export async function obtener(key: string) {
   try {
     if (!key) {
       throw console.error(
-        "[TSPaste Error] No has puesto la key que quieres obtener.",
+        "[DTSPaste Error] No has puesto la key que quieres obtener.",
       );
     }
 
@@ -16,13 +16,13 @@ export async function obtener(key: string) {
       obtenido = res.json();
     }).catch((err) => {
       throw console.error(
-        `[TSPaste Error] [${err.status}] ==> ${err.statusText}`,
+        `[DTSPaste Error] [${err.status}] ==> ${err.statusText}`,
       );
     });
 
     if (!obtenido) {
       throw console.error(
-        "[TSPaste Error] No se obtuvo ninguna respuesta del servidor.\nKey: " +
+        "[DTSPaste Error] No se obtuvo ninguna respuesta del servidor.\nKey: " +
           key,
       );
     }
@@ -30,7 +30,7 @@ export async function obtener(key: string) {
     return obtenido;
   } catch (error) {
     throw console.error(
-      "[TSPaste Error] Ocurrió un error desconocido obteniendo los datos.",
+      "[DTSPaste Error] Ocurrió un error desconocido obteniendo los datos.",
     );
   }
 }
