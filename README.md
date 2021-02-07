@@ -66,7 +66,7 @@ true
 ```typescript
 import { paquete } from "https://deno.land/x/tspaste/mod.ts";
 
-const res = await eliminar("abcdefgh", "zyzasaasdtslasebjd8w9sa");
+const res = paquete;
 
 console.log(res);
 
