@@ -16,7 +16,7 @@
 - Publica un código a jspaste, devuelve la **Key** y el **Secret**:
 
 ```typescript
-import { publicar } from "https://deno.land/x/dtspaste/mod.ts";
+import { publicar } from "https://deno.land/x/tspaste/mod.ts";
 
 const res = await publicar("Hello, world!");
 
@@ -33,7 +33,7 @@ console.log(res);
 - Obtiene un código de jspaste, usando su **Key**:
 
 ```typescript
-import { obtener } from "https://deno.land/x/dtspaste/mod.ts";
+import { obtener } from "https://deno.land/x/tspaste/mod.ts";
 
 const res = await obtener("abcdefgh");
 
@@ -50,7 +50,7 @@ console.log(res);
 - Elimina un código de jspaste, usando su **Key** y **Secret**:
 
 ```typescript
-import { eliminar } from "https://deno.land/x/dtspaste/mod.ts";
+import { eliminar } from "https://deno.land/x/tspaste/mod.ts";
 
 const res = await eliminar("abcdefgh", "zyzasaasdtslasebjd8w9sa");
 
@@ -64,7 +64,7 @@ true
 - Informacion paquete:
 
 ```typescript
-import { paquete } from "https://deno.land/x/dtspaste/mod.ts";
+import { paquete } from "https://deno.land/x/tspaste/mod.ts";
 
 const res = await eliminar("abcdefgh", "zyzasaasdtslasebjd8w9sa");
 
