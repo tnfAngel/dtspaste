@@ -5,9 +5,9 @@
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=AlexxTek_tspaste&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=AlexxTek_tspaste)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=AlexxTek_tspaste&metric=security_rating)](https://sonarcloud.io/dashboard?id=AlexxTek_tspaste)
 
->> Port de [jspaste](https://www.npmjs.com/package/jspaste). Pública y obtén datos de [jspaste](https://jspaste.tnfangel.repl.co/) en Deno 🦕
->> 
->> Paquete original hecho por `tnfAngel#8642` e porteado por `AlexTek#0840`
+> Port de [jspaste](https://www.npmjs.com/package/jspaste). Pública y obtén datos de [jspaste](https://jspaste.tnfangel.repl.co/) en Deno 🦕
+> 
+> Paquete original hecho por `tnfAngel#8642` e porteado por `AlexTek#0840`
 
 # Documentación
 
