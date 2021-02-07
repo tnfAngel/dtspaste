@@ -1,45 +1,45 @@
-import axios from "https://cdn.skypack.dev/axios@0.21.1";
-
-const baseURL = "https://jspaste.tnfangel.repl.co";
+const baseURL: string = "https://jspaste.tnfangel.repl.co";
 
 export async function eliminar(key: string, secret: string) {
-  if (!key) {
-    throw new Error(
-      "[TSPaste Error] No has puesto la clave que quieres eliminar.",
-    );
-  }
+  try {
+    if (!key) {
+      throw console.error(
+        "[TSPaste Error] No has puesto la key que quieres eliminar.",
+      );
+    }
 
-  if (!secret) {
-    throw new Error(
-      "[TSPaste Error] Tienes que poner el secret de la clave para poder eliminarla.",
-    );
-  }
+    if (!secret) {
+      throw console.error(
+        "[TSPaste Error] No has puesto el secret para poder eliminar la key.",
+      );
+    }
 
-  let obtenido = false;
+    let obtenido: boolean = false;
 
-  axios(
-    {
-      method: "post",
-      baseURL: `${baseURL}/documents/${key}/delete`,
-      headers: { "Secret": `${secret}` },
-      data: key,
-      timeout: 5000,
-      responseType: "json",
-      responseEncoding: "utf8",
-    },
-  )
-    .then(() => {
+    await fetch(`${baseURL}/documents/${key}/delete`, {
+      method: "POST",
+      headers: {
+        "Secret": `${secret}`,
+      },
+      body: JSON.stringify(key),
+    }).then(() => {
       obtenido = true;
-    })
-    .catch(function (err: { status: any; statusText: any }) {
-      console.error(`[TSPaste Error] (${err.status})  ${err.statusText}`);
+    }).catch((err) => {
+      obtenido = false;
+      console.error(`[TSPaste Error] [${err.status}] ==> ${err.statusText}`);
     });
 
-  if (!obtenido) {
-    throw new Error(
-      "[TSPaste Error] Ocurrio un error desconocido obteniendo los datos.",
+    if (!obtenido) {
+      throw console.error(
+        "[TSPaste Error] No se obtuvo ninguna respuesta del servidor.\nKey: " +
+          key + "\nSecret: " + secret,
+      );
+    }
+
+    return obtenido;
+  } catch (error) {
+    throw console.error(
+      "[TSPaste Error] Ocurrió un error desconocido obteniendo los datos.",
     );
   }
-
-  return obtenido;
 }

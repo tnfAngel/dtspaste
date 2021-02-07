@@ -1,51 +1,51 @@
-import axios from "https://cdn.skypack.dev/axios@0.21.1";
 import { eliminar } from "../mod.ts";
 
-const baseURL = "https://jspaste.tnfangel.repl.co";
+const baseURL: string = "https://jspaste.tnfangel.repl.co";
 
 export async function publicar(texto: string, tiempo?: number) {
-  if (!texto) {
-    throw new Error(
-      "[TSPaste Error] No has puesto el texto que quieres publicar.",
-    );
-  }
-
-  let obtenido: any;
-
-  axios(
-    {
-      method: "post",
-      baseURL: `${baseURL}/documents`,
-      data: texto,
-      timeout: 5000,
-      responseType: "json",
-      responseEncoding: "utf8",
-    },
-  )
-    .then(function (res: { data: any }) {
-      obtenido = res.data;
-      obtenido = JSON.parse(obtenido);
-    })
-    .catch(function (err: { status: any; statusText: any }) {
-      console.error(`[TSPaste Error] (${err.status})  ${err.statusText}`);
-    });
-
-  if (!obtenido) {
-    throw new Error(
-      "[TSPaste Error] Ocurrio un error desconocido obteniendo los datos.",
-    );
-  }
-
-  if (tiempo) {
-    if (isNaN(tiempo)) {
-      throw new Error(
-        "[TSPaste Error] El tiempo puesto en publicar no es un numero.",
+  try {
+    if (!texto) {
+      throw console.error(
+        "[TSPaste Error] No has puesto el texto que quieres publicar.",
       );
     }
-    setTimeout(async function () {
-      await eliminar(obtenido.key, obtenido.secret);
-    }, tiempo);
-  }
 
-  return obtenido;
+    let obtenido: any;
+
+    await fetch(`${baseURL}/documents`, {
+      method: "POST",
+      body: JSON.stringify(texto),
+    }).then((res) => {
+      obtenido = res.json();
+    }).catch((err) => {
+      throw console.error(
+        `[TSPaste Error] [${err.status}] ==> ${err.statusText}`,
+      );
+    });
+
+    if (!obtenido) {
+      throw console.error(
+        "[TSPaste Error] No se obtuvo ninguna respuesta del servidor.\nMensaje para publicar: " +
+          texto,
+      );
+    }
+
+    if (tiempo) {
+      if (isNaN(tiempo)) {
+        console.error(
+          "[TSPaste Error] El numero es invalido, no se hará nada...",
+        );
+        return obtenido;
+      }
+      setTimeout(async function () {
+        await eliminar(obtenido.key, obtenido.secret);
+      }, tiempo);
+    }
+
+    return obtenido;
+  } catch (error) {
+    throw console.error(
+      "[TSPaste Error] Ocurrió un error desconocido obteniendo los datos.",
+    );
+  }
 }
